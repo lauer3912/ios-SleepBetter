@@ -1,6 +1,7 @@
 import Foundation
 import Combine
 
+@MainActor
 final class SettingsViewModel: ObservableObject {
     @Published var userProfile: UserProfile
     @Published var sleepGoal: SleepGoal
