@@ -2,7 +2,87 @@
   "images" : [
     {
       "idiom" : "universal",
-      "platform" : "ios",
+      "scale" : "1x",
+      "size" : "20x20"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "size" : "20x20"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x",
+      "size" : "20x20"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "1x",
+      "size" : "29x29"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "size" : "29x29"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x",
+      "size" : "29x29"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "1x",
+      "size" : "40x40"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "size" : "40x40"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x",
+      "size" : "40x40"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "1x",
+      "size" : "58x58"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "size" : "58x58"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x",
+      "size" : "58x58"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "size" : "60x60"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x",
+      "size" : "60x60"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "size" : "76x76"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "size" : "83.5x83.5"
+    },
+    {
+      "idiom" : "ios-marketing",
+      "scale" : "1x",
       "size" : "1024x1024"
     }
   ],
