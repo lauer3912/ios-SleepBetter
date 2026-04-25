@@ -46,14 +46,33 @@ targets:
       path: SleepBetter/Sources/App/SleepBetter.entitlements
       properties: {}
 
+  SleepBetterUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: SleepBetterUITests
+    settings:
+      base:
+        INFOPLIST_FILE: SleepBetterUITests/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: com.ggsheng.SleepBetterUITests
+        PRODUCT_NAME: SleepBetterUITests
+        GENERATE_INFOPLIST_FILE: NO
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: "9L6N2ZF26B"
+    dependencies:
+      - target: SleepBetter
+
 schemes:
   SleepBetter:
     build:
       targets:
         SleepBetter: all
+        SleepBetterUITests: test
     run:
       config: Debug
     test:
       config: Debug
+      targets:
+        - SleepBetterUITests
     archive:
       config: Release
