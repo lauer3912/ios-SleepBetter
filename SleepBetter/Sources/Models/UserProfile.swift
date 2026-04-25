@@ -53,7 +53,7 @@ struct SleepCycle: Codable, Identifiable {
     }
 }
 
-struct SmartAlarm {
+struct SmartAlarm: Codable {
     var isEnabled: Bool
     var targetTime: Date
     var windowMinutes: Int

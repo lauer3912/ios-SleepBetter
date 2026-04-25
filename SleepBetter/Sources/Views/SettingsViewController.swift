@@ -236,7 +236,7 @@ final class SetAlarmViewController: UIViewController {
         view.backgroundColor = UIColor.backgroundColor
 
         datePicker.datePickerMode = .time
-        datePicker.preferredDatePickerStyle = .wheel
+        datePicker.preferredDatePickerStyle = .wheels
         datePicker.minimumDate = Date()
 
         view.addSubview(datePicker)
