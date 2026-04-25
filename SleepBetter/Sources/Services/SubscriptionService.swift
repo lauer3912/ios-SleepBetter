@@ -53,15 +53,16 @@ final class SubscriptionService: ObservableObject {
         var purchased: [Product] = []
 
         for await result in Transaction.currentEntitlements {
-            if let product = products.first(where: { $0.id == result.productID }) {
-                purchased.append(product)
+            switch result {
+            case .verified(let transaction):
+                if let product = products.first(where: { $0.id == transaction.productID }) {
+                    purchased.append(product)
+                }
+            case .unverified:
+                break
             }
         }
 
         purchasedProducts = purchased
-    }
-
-    enum SubscriptionError: Error {
-        case verificationFailed
     }
 }
