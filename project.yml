@@ -14,6 +14,7 @@ settings:
     DEVELOPMENT_TEAM: "9L6N2ZF26B"
     CODE_SIGN_STYLE: Automatic
     ENABLE_USER_SCRIPT_SANDBOXING: NO
+    CODE_SIGNING_ALLOWED: YES
 
 packages:
   SnapKit:
@@ -34,6 +35,11 @@ targets:
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         CODE_SIGN_ENTITLEMENTS: SleepBetter/Sources/App/SleepBetter.entitlements
         GENERATE_INFOPLIST_FILE: NO
+      configs:
+        Debug:
+          CODE_SIGNING_ALLOWED: NO
+        Release:
+          CODE_SIGNING_ALLOWED: YES
     dependencies:
       - package: SnapKit
     entitlements:
@@ -46,6 +52,8 @@ schemes:
       targets:
         SleepBetter: all
     run:
+      config: Debug
+    test:
       config: Debug
     archive:
       config: Release
