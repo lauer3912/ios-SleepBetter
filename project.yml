@@ -38,9 +38,7 @@ targets:
       - package: SnapKit
     entitlements:
       path: SleepBetter/Sources/App/SleepBetter.entitlements
-      properties:
-        com.apple.developer.healthkit: true
-        com.apple.developer.healthkit.access: []
+      properties: {}
 
 schemes:
   SleepBetter:
