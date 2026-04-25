@@ -33,9 +33,7 @@ final class SubscriptionService: ObservableObject {
         let result = try await product.purchase()
 
         switch result {
-        case .success(let verification):
-            let transaction = try checkVerified(verification)
-            await transaction.finish()
+        case .success:
             await updatePurchasedProducts()
             return true
         case .userCancelled:
@@ -61,15 +59,6 @@ final class SubscriptionService: ObservableObject {
         }
 
         purchasedProducts = purchased
-    }
-
-    private func checkVerified<T>(_ result: VerificationResult<T>) throws -> T {
-        switch result {
-        case .unverified:
-            throw SubscriptionError.verificationFailed
-        case .verified(let safe):
-            return safe
-        }
     }
 
     enum SubscriptionError: Error {
