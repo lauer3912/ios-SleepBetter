@@ -1,26 +1,26 @@
 import Foundation
 import StoreKit
 
-final class SubscriptionService {
+@MainActor
+final class SubscriptionService: ObservableObject {
     static let shared = SubscriptionService()
 
     private let productIds = ["sleepbetter_premium_monthly", "sleepbetter_premium_yearly"]
 
-    var products: [Product] = []
-    var purchasedProducts: [Product] = []
+    @Published var products: [Product] = []
+    @Published var purchasedProducts: [Product] = []
 
     var isPremium: Bool {
-        purchasedProducts.contains { $0.id == productIds[0] } ||
-        purchasedProducts.contains { $0.id == productIds[1] }
+        !purchasedProducts.isEmpty
     }
 
     private init() {
         Task {
             await loadProducts()
+            await updatePurchasedProducts()
         }
     }
 
-    @MainActor
     func loadProducts() async {
         do {
             products = try await Product.products(for: productIds)
@@ -29,7 +29,6 @@ final class SubscriptionService {
         }
     }
 
-    @MainActor
     func purchase(_ product: Product) async throws -> Bool {
         let result = try await product.purchase()
 
@@ -48,20 +47,16 @@ final class SubscriptionService {
         }
     }
 
-    @MainActor
     func restorePurchases() async {
         await updatePurchasedProducts()
     }
 
-    @MainActor
-    private func updatePurchasedProducts() async {
+    func updatePurchasedProducts() async {
         var purchased: [Product] = []
 
         for await result in Transaction.currentEntitlements {
-            if case .success(let transaction) = result {
-                if let product = products.first(where: { $0.id == transaction.productID }) {
-                    purchased.append(product)
-                }
+            if let product = products.first(where: { $0.id == result.productID }) {
+                purchased.append(product)
             }
         }
 
